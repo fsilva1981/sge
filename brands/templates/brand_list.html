@@ -12,16 +12,20 @@ SGE - Marcas
     <div class="col-md-6">
         <form method="get" action="{% url 'brand_list' %}">
             <div class="input-group">
-                <input type="text" class="form-control"  name="name" placeholder="Nome" value="{{ request.GET.name }}">
+                <input type="text" class="form-control" name="name" placeholder="Nome" value="{{ request.GET.name }}">
                 <button type="submit" class="btn btn-primary">
-                    <i class="bi bi-search"></i> 
-                </button> 
+                    <i class="bi bi-search"></i>
+                </button>
             </div>
         </form>
     </div>
+
+    <div class="col-md-6">
+        <a href="{% url 'brand_create' %}" class="btn btn-success float-end">
+            <i class="bi bi-plus-circle"></i> Adicionar Marca
+        </a>
+    </div>
 </div>
-
-
 
 <div class="table-responsive">
     <table class="table table-striped table-bordered">
@@ -30,6 +34,7 @@ SGE - Marcas
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Descrição</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -38,13 +43,14 @@ SGE - Marcas
                 <td>{{ brand.id }}</td>
                 <td>{{ brand.name }}</td>
                 <td>{{ brand.description }}</td>
+                <td>
+                  <a href="{% url 'brand_detail' brand.id %}" class="btn btn-info btn-sm">
+                    <i class="bi bi-eye"></i>  
+                </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
-</div>     
+</div>
 
 {% endblock %}
-
-
-
